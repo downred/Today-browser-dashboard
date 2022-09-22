@@ -1,13 +1,18 @@
 import "./App.css";
 import Time from "./components/time";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IoLocationSharp } from "@fortawesome/free-solid-svg-icons";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 function App() {
   return (
     <div className="App bg">
-      <Time className="time" />
-      <FontAwesomeIcon icon="IoLocationSharp" />
+      <div className="time-wrapper">
+        <Time className="time" />
+        <h4 className="location">
+          <span>
+            <FaMapMarkerAlt /> Fushe Kosove, Kosovo
+          </span>
+        </h4>
+      </div>
     </div>
   );
 }

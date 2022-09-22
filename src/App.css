@@ -10,4 +10,10 @@
   background-image: url("./weather-images/antoine-barres-o4u8pFwSiQE-unsplash.jpg");
 }
 
+.time-wrapper {
+  display: grid;
+}
 
+.location {
+  margin: 0;
+}
