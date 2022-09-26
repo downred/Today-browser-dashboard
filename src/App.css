@@ -24,6 +24,7 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-bottom: 3rem;
 }
 
 span {
@@ -37,8 +38,12 @@ span {
 }
 
 .pg-bottom {
+  min-height: 15rem;
+  margin: 1rem;
+  column-gap: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  justify-content: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 @media (max-width: 500px) {
@@ -48,5 +53,11 @@ span {
 
   span {
     padding-left: 5px;
+  }
+}
+
+@media (max-width:420px) {
+  .pg-bottom {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }

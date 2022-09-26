@@ -1,8 +1,21 @@
 .box {
-  width: 90%;
+  min-height: 7rem;
+  display: flex;
   height: 100%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, .5);
   border-radius: 10px;
-  margin: 3rem;
-  opacity: 0.5;
+  flex-wrap: wrap;
+}
+
+.temp {
+  font-size: 6rem;
+}
+
+.description {
+  padding-left: .5rem;
+}
+
+.weather {
+  display: grid;
+  grid-template-rows: 2% 98%;
 }
