@@ -1,14 +1,22 @@
 .time {
   font-size: 10rem;
-  /* text-align: center; */
-  padding-top: 2rem;
-  /* max-width: 100vw; */
+  padding-top: 2rem 0 0 0;
   pointer-events: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   caret-color: transparent;
-  /* width: 100%;
-  flex-basis: 100%; */
+}
+
+@media (max-width: 810px) {
+  .time {
+    font-size: 10rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .time {
+    font-size: 6rem;
+  }
 }

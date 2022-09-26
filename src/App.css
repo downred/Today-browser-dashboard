@@ -11,9 +11,42 @@
 }
 
 .time-wrapper {
-  display: grid;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .location {
   margin: 0;
+  font-size: 1.5rem;
+  width: 100%;
+  font-weight: 100;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+span {
+  /* padding: 3px; */
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  caret-color: transparent;
+}
+
+.pg-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 500px) {
+  .location {
+    font-size: 1.2rem;
+  }
+
+  span {
+    padding-left: 5px;
+  }
 }
