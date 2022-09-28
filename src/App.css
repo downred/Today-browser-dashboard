@@ -28,7 +28,6 @@
 }
 
 span {
-  /* padding: 3px; */
   pointer-events: none;
   -webkit-user-select: none;
   -moz-user-select: none;
