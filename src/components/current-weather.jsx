@@ -1,5 +1,6 @@
 import "./modules/current-weather.css";
 import { FaWind } from "react-icons/fa";
+import HourlyWeather from "./hourly-weather/hourly-weather";
 
 const CurrentWeather = () => {
   return (
@@ -25,13 +26,7 @@ const CurrentWeather = () => {
         </div>
       </div>
       <div className="more-details">
-        <div className="hourly">
-          <div className="hour">
-            <span className="hourly-temp">5°C</span>
-            <span className="hourly-desc">Cloudy</span>
-            <span><FaWind></FaWind> 12km/h</span>
-          </div>
-        </div>
+        <HourlyWeather />
       </div>
     </div>
   );
