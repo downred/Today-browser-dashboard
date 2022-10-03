@@ -27,6 +27,10 @@ const CurrentWeather = () => {
       </div>
       <div className="more-details">
         <HourlyWeather />
+        <HourlyWeather />
+        <HourlyWeather />
+        <HourlyWeather />
+        <HourlyWeather />
       </div>
     </div>
   );

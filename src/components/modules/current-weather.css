@@ -39,41 +39,9 @@
 }
 
 .more-details {
-  width: 100%;
+  min-width: auto;
+  height: 50%;
   display: flex;
-  flex-direction: column;
-}
-
-.hourly {
-  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  min-height: 50%;
-}
-
-.hour {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hourly-temp {
-  padding-left: 1rem;
-  padding-top: .5rem;
-}
-
-.hourly-temp span {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.hourly-desc {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: .8rem;
-  flex: 3;
-}
-
-.hourly-wspeed {
-  font-size: .8rem;
-  text-align: center;
 }
