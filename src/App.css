@@ -43,6 +43,7 @@ span {
   display: grid;
   justify-content: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  /* grid-template-columns: auto auto; */
 }
 
 @media (max-width: 500px) {

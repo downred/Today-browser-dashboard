@@ -1,6 +1,7 @@
 .box {
   min-height: 7rem;
   display: flex;
+  width: fit-content;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -40,7 +41,7 @@
 
 .more-details {
   min-width: auto;
-  height: 50%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
