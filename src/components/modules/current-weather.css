@@ -1,8 +1,8 @@
 .box {
   min-height: 7rem;
   display: flex;
-  width: fit-content;
   height: 100%;
+  width: fit-content;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }

@@ -2,6 +2,7 @@ import "./App.css";
 import Time from "./components/time";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import CurrentWeather from "./components/current-weather";
+import NewsBox from "./components/news-component/news-box";
 
 function App() {
   return (
@@ -15,9 +16,7 @@ function App() {
       </div>
       <div className="pg-bottom">
         <CurrentWeather />
-        <div className="test">
-          <p></p>
-        </div>
+        <NewsBox/>
       </div>
     </div>
   );

@@ -1,0 +1,11 @@
+.news-box {
+  padding: 0 1rem;
+  margin: 0;
+  justify-self: start;
+  box-sizing: border-box;
+  /* width: auto; */
+}
+
+/* .article {
+  width: 80%;
+} */
