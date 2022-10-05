@@ -5,6 +5,8 @@ import CurrentWeather from "./components/current-weather";
 import NewsBox from "./components/news-component/news-box";
 
 function App() {
+  const handleAPIReqs = () => {};
+
   return (
     <div className="App bg">
       <div className="time-wrapper">
@@ -16,7 +18,7 @@ function App() {
       </div>
       <div className="pg-bottom">
         <CurrentWeather />
-        <NewsBox/>
+        <NewsBox />
       </div>
     </div>
   );

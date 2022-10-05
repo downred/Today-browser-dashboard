@@ -1,5 +1,4 @@
 import "./modules/current-weather.css";
-import { FaWind } from "react-icons/fa";
 import HourlyWeather from "./hourly-weather/hourly-weather";
 
 const CurrentWeather = () => {

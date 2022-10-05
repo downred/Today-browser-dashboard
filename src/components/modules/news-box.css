@@ -3,9 +3,43 @@
   margin: 0;
   justify-self: start;
   box-sizing: border-box;
-  /* width: auto; */
+  flex-direction: column;
+  max-height: 15rem;
 }
 
-/* .article {
-  width: 80%;
-} */
+.title {
+  margin: 0;
+}
+
+.news-header {
+  font-weight: 600;
+  margin: 0;
+}
+
+.content {
+  margin: 0;
+  line-height: 1rem;
+  font-weight: 100;
+}
+
+.article-container {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.article-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1050px) {
+  .article {
+    font-size: 90% !important;
+  }
+}
+
+@media screen and (max-width: 1185px) {
+  .news-box {
+    max-height: 24rem;
+  }
+}

@@ -8,6 +8,8 @@
   background-size: cover;
   height: 100vh;
   background-image: url("./weather-images/antoine-barres-o4u8pFwSiQE-unsplash.jpg");
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .time-wrapper {
@@ -39,12 +41,11 @@ span {
 .pg-bottom {
   min-height: 15rem;
   margin: 1rem 5rem;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   row-gap: 1rem;
   display: grid;
   justify-content: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  /* grid-template-columns: auto auto; */
+  grid-template-columns: auto auto;
 }
 
 @media (max-width: 500px) {
@@ -57,8 +58,25 @@ span {
   }
 }
 
-@media (max-width:420px) {
+@media (max-width: 420px) {
   .pg-bottom {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .pg-bottom {
+    margin-top: 0rem;
+  }
+}
+
+@media screen and (max-width: 795px) {
+  .pg-bottom {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .bg {
+    overflow: visible;
+    height: 170vh;
   }
 }
