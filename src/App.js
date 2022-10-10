@@ -3,9 +3,15 @@ import Time from "./components/time";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import CurrentWeather from "./components/current-weather";
 import NewsBox from "./components/news-component/news-box";
+import { useEffect } from "react";
 
 function App() {
-  const handleAPIReqs = () => {};
+  
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords)
+    })
+  })
 
   return (
     <div className="App bg">
