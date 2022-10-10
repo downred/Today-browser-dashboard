@@ -1,6 +1,6 @@
 import "../modules/news-box.css";
 
-const Article = () => {
+const Article = (props) => {
   return (
     <div className="article">
       <h4 className="news-header">

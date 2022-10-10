@@ -2,7 +2,7 @@ import "../modules/current-weather.css";
 import Article from "./article";
 import "../modules/news-box.css";
 
-const NewsBox = () => {
+const NewsBox = (props) => {
   return (
     <div className="box news-box">
       <h4 className="title">What's new today?</h4>
@@ -10,7 +10,7 @@ const NewsBox = () => {
         <hr />
       </span>
       <div className="article-container">
-        <Article />
+        <Article article={props.newsData} />
         <Article />
         <Article />
         <Article />

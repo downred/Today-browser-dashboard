@@ -1,1 +1,4 @@
-export const WEATHER_API_KEY = "70a1122d36a7fe1fff1184127e85c207";
+export const WEATHER_API_KEY = "2442a0ec718de006214e729371186bbc";
+export const API_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather?";
+export const NEWS_API_ENDPOINT =
+  "https://newsdata.io/api/1/news?apikey=pub_11928a7cae8c72c2e5ba48c25ee5421940875";
