@@ -3,6 +3,9 @@ import Article from "./article";
 import "../modules/news-box.css";
 
 const NewsBox = (props) => {
+
+  console.log(props)
+
   return (
     <div className="box news-box">
       <h4 className="title">What's new today?</h4>
@@ -10,12 +13,9 @@ const NewsBox = (props) => {
         <hr />
       </span>
       <div className="article-container">
-        <Article article={props.newsData} />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
+        {props.newsData.map((article) => {
+          return <Article title={article.title} />;
+        })}
       </div>
     </div>
   );

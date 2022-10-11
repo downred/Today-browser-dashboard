@@ -12,8 +12,9 @@ function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [location, setLocation] = useState(null);
-  const [newsData, setNewsData] = useState(null);
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const [newsData, setNewsData] = useState([]);
+  const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
+  let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT];
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -22,28 +23,14 @@ function App() {
       setLong(position.coords.longitude);
     });
 
-    const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
+    async function fetchData() {
+      const request = await axios.get(NEWS_API_ENDPOINT);
+      setNewsData(request.data.results);
+      console.log(request.data.results);
+    }
 
-    let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT];
-
-    axios
-      .all(endpoints.map((endpoint) => axios.get(endpoint)))
-      .then(
-        axios.spread((...responses) => {
-          setCurrentWeather(responses[0]);
-          // setLocation(responses[0].data.name);
-          setNewsData(responses[1]);
-
-          console.log(responses[0].data);
-          console.log(location);
-          // console.log(responses[0]);
-          console.log(newsData);
-        })
-      )
-      .catch((errors) => {
-        console.log(errors);
-      });
-  }, []);
+    fetchData();
+  }, [NEWS_API_ENDPOINT, FINAL_ENDPOINT]);
 
   return (
     <div className="App bg">
@@ -56,7 +43,7 @@ function App() {
       </div>
       <div className="pg-bottom">
         <CurrentWeather />
-        <NewsBox newsData={ newsData } />
+        <NewsBox newsData={newsData} />
       </div>
     </div>
   );
