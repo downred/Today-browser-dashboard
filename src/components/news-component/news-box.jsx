@@ -14,7 +14,7 @@ const NewsBox = (props) => {
       </span>
       <div className="article-container">
         {props.newsData.map((article) => {
-          return <Article title={article.title} />;
+          return <Article title={article.title} description={article.description} url={article.url} />;
         })}
       </div>
     </div>

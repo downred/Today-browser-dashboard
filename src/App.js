@@ -11,7 +11,8 @@ import axios from "axios";
 function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-  const [location, setLocation] = useState(null);
+  const [bg, setBg] = useState(null)
+  const [currentWeather, setCurrentWeather] = useState(null);
   const [newsData, setNewsData] = useState([]);
   const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
   let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT];
@@ -24,26 +25,30 @@ function App() {
     });
 
     async function fetchData() {
-      const request = await axios.get(NEWS_API_ENDPOINT);
-      setNewsData(request.data.results);
-      console.log(request.data.results);
+      const newsRequest = await axios.get(NEWS_API_ENDPOINT);
+      const weatherRequest = await axios.get(FINAL_ENDPOINT);
+      setNewsData(newsRequest.data.data);
+      setCurrentWeather(weatherRequest.data);
+      setBg({ backgroundImage: `./weather-images/${weatherRequest.data.weather[0].icon}` })
+      console.log(newsRequest.data.data);
+      console.log(weatherRequest.data)
     }
 
     fetchData();
-  }, [NEWS_API_ENDPOINT, FINAL_ENDPOINT]);
+  }, endpoints);
 
   return (
-    <div className="App bg">
+    <div className="App bg" style={bg}>
       <div className="time-wrapper">
         <Time />
         <div className="location">
           <FaMapMarkerAlt />
-          <span>location</span>
+          {currentWeather && <span>{currentWeather.name}, { currentWeather.sys.country }</span>}
         </div>
       </div>
       <div className="pg-bottom">
-        <CurrentWeather />
-        <NewsBox newsData={newsData} />
+        <CurrentWeather weatherData={currentWeather}/>
+        {newsData[0] && <NewsBox newsData={newsData} />}
       </div>
     </div>
   );
