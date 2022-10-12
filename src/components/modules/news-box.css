@@ -48,7 +48,7 @@
   }
 }
 
-@media screen and (max-width: 1185px) {
+@media screen and (max-width: 1200px) {
   .news-box {
     max-height: 24rem;
   }

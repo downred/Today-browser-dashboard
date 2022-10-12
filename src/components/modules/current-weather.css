@@ -49,7 +49,7 @@
   flex-direction: row;
 }
 
-@media only screen and (max-width: 1185px) {
+@media only screen and (max-width: 1200px) {
   .weather {
     width: 100%;
   }
@@ -60,11 +60,11 @@
 
   .details {
     width: 90%;
-    line-height: .7;
+    line-height: 0.7;
   }
 }
 
-@media screen and (max-width: 795px) {
+@media screen and (max-width: 805px) {
   .box {
     width: 100%;
   }

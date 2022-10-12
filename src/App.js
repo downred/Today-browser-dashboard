@@ -6,12 +6,15 @@ import NewsBox from "./components/news-component/news-box";
 import { useEffect } from "react";
 import { API_ENDPOINT, WEATHER_API_KEY, NEWS_API_ENDPOINT } from "./api.js";
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
 function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-  const [bg, setBg] = useState(null)
+  const [bg, setBg] = useState(
+    `https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj`
+  );
   const [currentWeather, setCurrentWeather] = useState(null);
   const [newsData, setNewsData] = useState([]);
   const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
@@ -29,26 +32,44 @@ function App() {
       const weatherRequest = await axios.get(FINAL_ENDPOINT);
       setNewsData(newsRequest.data.data);
       setCurrentWeather(weatherRequest.data);
-      setBg({ backgroundImage: `./weather-images/${weatherRequest.data.weather[0].icon}` })
+      setBg(`./weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
       console.log(newsRequest.data.data);
-      console.log(weatherRequest.data)
+      console.log(weatherRequest.data);
     }
 
     fetchData();
   }, endpoints);
 
   return (
-    <div className="App bg" style={bg}>
+    <div className="App bg">
       <div className="time-wrapper">
         <Time />
-        <div className="location">
-          <FaMapMarkerAlt />
-          {currentWeather && <span>{currentWeather.name}, { currentWeather.sys.country }</span>}
-        </div>
+        {currentWeather && (
+          <div className="location">
+            <FaMapMarkerAlt />
+            <span>
+              {currentWeather.name}, {currentWeather.sys.country}
+            </span>
+          </div>
+        )}
       </div>
       <div className="pg-bottom">
-        <CurrentWeather weatherData={currentWeather}/>
-        {newsData[0] && <NewsBox newsData={newsData} />}
+        {/* {currentWeather ? (
+          <CurrentWeather weatherData={currentWeather} />
+        ) : (
+          <Loading/>
+        )}
+        {newsData[0] ? <NewsBox newsData={newsData} /> : <Loading/>} */}
+        <ThreeDots
+          height="80"
+          width="80"
+          radius="9"
+          color="#fff"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        />
       </div>
     </div>
   );
