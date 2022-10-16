@@ -1,20 +1,21 @@
 import React from "react";
 import "../modules/hourly-weather.css";
 import { FaWind } from "react-icons/fa";
-import '../../css/weather-icons.css'
-import '../../css/weather-icons.min.css'
 
-
-const Hour = () => {
+const Hour = (props) => {
+  console.log(props.data);
   return (
     <div className="hour">
-      <i class="wi wi-day-sunny-overcast wi-fw wi-2x w-icon"></i>
+      <img
+        src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
+        className="w-icon"
+      />
       <span className="hourly-temp">
-        <span>5</span>°C
+        <span>{Math.round(props.data.main.temp)}</span>°C
       </span>
-      <span className="hourly-desc">Cloudy</span>
+      <span className="hourly-desc">{props.data.weather[0].main}</span>
       <span className="hourly-wspeed">
-        <FaWind></FaWind> 12km/h
+        <FaWind></FaWind> {Math.round(props.data.wind.speed)}km/h
       </span>
       <span className="hourly-time">12:00</span>
     </div>

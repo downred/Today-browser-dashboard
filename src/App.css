@@ -48,6 +48,11 @@ span {
   grid-template-columns: auto auto;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 500px) {
   .location {
     font-size: 1.2rem;

@@ -35,11 +35,9 @@ const CurrentWeather = (props) => {
         </div>
       )}
       <div className="more-details">
-        <HourlyWeather />
-        <HourlyWeather />
-        <HourlyWeather />
-        <HourlyWeather />
-        <HourlyWeather />
+        {props.forecastData.map((hour) => (
+          <HourlyWeather data={hour} />
+        ))}
       </div>
     </div>
   );

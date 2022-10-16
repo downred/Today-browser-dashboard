@@ -4,7 +4,6 @@ import "../modules/news-box.css";
 
 const NewsBox = (props) => {
 
-  console.log(props)
 
   return (
     <div className="box news-box">

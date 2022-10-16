@@ -4,9 +4,14 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import CurrentWeather from "./components/current-weather";
 import NewsBox from "./components/news-component/news-box";
 import { useEffect } from "react";
-import { API_ENDPOINT, WEATHER_API_KEY, NEWS_API_ENDPOINT } from "./api.js";
+import {
+  API_ENDPOINT,
+  WEATHER_API_KEY,
+  NEWS_API_ENDPOINT,
+  FORECAST_API_ENDPOINT,
+} from "./api.js";
 import { useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
+import Loading from "./components/loading";
 import axios from "axios";
 
 function App() {
@@ -16,9 +21,11 @@ function App() {
     `https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj`
   );
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [newsData, setNewsData] = useState([]);
   const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
-  let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT];
+  const FINAL_FORECAST_ENDPOINT = `${FORECAST_API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
+  let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT, FINAL_FORECAST_ENDPOINT];
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -30,8 +37,10 @@ function App() {
     async function fetchData() {
       const newsRequest = await axios.get(NEWS_API_ENDPOINT);
       const weatherRequest = await axios.get(FINAL_ENDPOINT);
+      const forecastRequest = await axios.get(FINAL_FORECAST_ENDPOINT);
       setNewsData(newsRequest.data.data);
       setCurrentWeather(weatherRequest.data);
+      setForecast(forecastRequest.data.list.slice(5,10));
       setBg(`./weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
       console.log(newsRequest.data.data);
       console.log(weatherRequest.data);
@@ -39,6 +48,8 @@ function App() {
 
     fetchData();
   }, endpoints);
+
+  console.log(forecast)
 
   return (
     <div className="App bg">
@@ -54,22 +65,15 @@ function App() {
         )}
       </div>
       <div className="pg-bottom">
-        {/* {currentWeather ? (
-          <CurrentWeather weatherData={currentWeather} />
+        {currentWeather ? (
+          <CurrentWeather
+            weatherData={currentWeather}
+            forecastData={forecast}
+          />
         ) : (
-          <Loading/>
+          <Loading />
         )}
-        {newsData[0] ? <NewsBox newsData={newsData} /> : <Loading/>} */}
-        <ThreeDots
-          height="80"
-          width="80"
-          radius="9"
-          color="#fff"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
-          visible={true}
-        />
+        {newsData[0] ? <NewsBox newsData={newsData} /> : <Loading />}
       </div>
     </div>
   );

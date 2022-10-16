@@ -2,10 +2,11 @@ import React from "react";
 import "../modules/hourly-weather.css";
 import Hour from "./hour";
 
-const HourlyWeather = () => {
+const HourlyWeather = (props) => {
+
   return (
     <div className="hourly">
-      <Hour/>
+      <Hour data={props.data} />
     </div>
   );
 };
