@@ -3,7 +3,6 @@ import "../modules/hourly-weather.css";
 import { FaWind } from "react-icons/fa";
 
 const Hour = (props) => {
-  console.log(props.data);
   return (
     <div className="hour">
       <img
@@ -17,7 +16,9 @@ const Hour = (props) => {
       <span className="hourly-wspeed">
         <FaWind></FaWind> {Math.round(props.data.wind.speed)}km/h
       </span>
-      <span className="hourly-time">12:00</span>
+      <span className="hourly-time">
+        {props.data.dt_txt.split(" ")[1].slice(0, 5)}
+      </span>
     </div>
   );
 };

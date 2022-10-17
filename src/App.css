@@ -7,7 +7,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  background-image: url("./weather-images/04d.jpg");
   box-sizing: border-box;
   overflow: hidden;
 }

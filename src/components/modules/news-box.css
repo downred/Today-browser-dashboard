@@ -50,6 +50,6 @@
 
 @media screen and (max-width: 1200px) {
   .news-box {
-    max-height: 24rem;
+    max-height: 24em;
   }
 }

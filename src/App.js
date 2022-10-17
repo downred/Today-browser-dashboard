@@ -17,9 +17,7 @@ import axios from "axios";
 function App() {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
-  const [bg, setBg] = useState(
-    `https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj`
-  );
+  const [bg, setBg] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [newsData, setNewsData] = useState([]);
@@ -40,19 +38,15 @@ function App() {
       const forecastRequest = await axios.get(FINAL_FORECAST_ENDPOINT);
       setNewsData(newsRequest.data.data);
       setCurrentWeather(weatherRequest.data);
-      setForecast(forecastRequest.data.list.slice(5,10));
-      setBg(`./weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
-      console.log(newsRequest.data.data);
-      console.log(weatherRequest.data);
+      setForecast(forecastRequest.data.list.slice(7, 12));
+      setBg(`/weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
     }
 
     fetchData();
   }, endpoints);
 
-  console.log(forecast)
-
   return (
-    <div className="App bg">
+    <div className="App bg" style={{ backgroundImage: `url(${bg})` }}>
       <div className="time-wrapper">
         <Time />
         {currentWeather && (
