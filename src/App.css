@@ -15,6 +15,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  z-index: -1;
 }
 
 .location {
@@ -45,6 +46,7 @@ span {
   display: grid;
   justify-content: grid;
   grid-template-columns: auto auto;
+  z-index: -1;
 }
 
 .loading {

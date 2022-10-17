@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import Loading from "./components/loading";
 import axios from "axios";
+import LocationOverlay from "./components/location-overlay";
 
 function App() {
   const [lat, setLat] = useState("");
@@ -27,7 +28,6 @@ function App() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords);
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
@@ -47,6 +47,7 @@ function App() {
 
   return (
     <div className="App bg" style={{ backgroundImage: `url(${bg})` }}>
+      {lat == "" && <LocationOverlay />}
       <div className="time-wrapper">
         <Time />
         {currentWeather && (
