@@ -9,6 +9,7 @@ import {
   WEATHER_API_KEY,
   NEWS_API_ENDPOINT,
   FORECAST_API_ENDPOINT,
+  NEWS_API_KEY
 } from "./api.js";
 import { useState } from "react";
 import Loading from "./components/loading";
@@ -22,9 +23,11 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [newsData, setNewsData] = useState([]);
+  const [newsSource, setNewsSource] = useState("bbc-news")
   const FINAL_ENDPOINT = `${API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
   const FINAL_FORECAST_ENDPOINT = `${FORECAST_API_ENDPOINT}lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`;
-  let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT, FINAL_FORECAST_ENDPOINT];
+  let endpoints = [FINAL_ENDPOINT, NEWS_API_ENDPOINT, FINAL_FORECAST_ENDPOINT, NEWS_API_KEY];
+  let date = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -33,10 +36,12 @@ function App() {
     });
 
     async function fetchData() {
-      const newsRequest = await axios.get(NEWS_API_ENDPOINT);
+      const newsRequest = await axios.get(
+        `${NEWS_API_ENDPOINT}everything?sources=${newsSource}&from=${date}&sortBy=popularity&apiKey=${NEWS_API_KEY}`
+      );
       const weatherRequest = await axios.get(FINAL_ENDPOINT);
       const forecastRequest = await axios.get(FINAL_FORECAST_ENDPOINT);
-      setNewsData(newsRequest.data.data);
+      setNewsData(newsRequest.data.articles);
       setCurrentWeather(weatherRequest.data);
       setForecast(forecastRequest.data.list.slice(7, 12));
       setBg(`/weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
