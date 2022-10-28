@@ -20,8 +20,28 @@
   color: #fff;
   border: none;
   font-size: 1rem;
-  margin-top: .4rem;
+  margin-top: 0.4rem;
   cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  width: 14rem;
+  border: 0px solid white;
+  background-color: rgb(52, 52, 52);
+  right: 6vw;
+  border-radius: 10px;
+  box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.23) inset;
+  -webkit-box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.23) inset;
+  -moz-box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.23) inset;
+  -webkit-animation: dropdown 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: dropdown 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.dd-option {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .title {
@@ -69,5 +89,34 @@
 @media screen and (max-width: 1200px) {
   .news-box {
     max-height: 24em;
+  }
+}
+
+@-webkit-keyframes dropdown {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+}
+@keyframes dropdown {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
 }
