@@ -17,9 +17,9 @@ const NewsBox = (props) => {
         {props.newsData.map((article) => {
           return (
             <Article
-              title={article.title}
-              description={article.description}
-              url={article.url}
+              title={article.webTitle}
+              
+              url={article.webUrl}
             />
           );
         })}

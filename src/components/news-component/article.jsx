@@ -8,7 +8,6 @@ const Article = (props) => {
           {props.title}
         </a>
       </h4>
-      <p className="content">{props.description}</p>
     </div>
   );
 };

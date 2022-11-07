@@ -65,6 +65,10 @@
   padding-bottom: 1rem;
 }
 
+.article:hover {
+  opacity: .5;
+}
+
 .article-link {
   text-decoration: none;
   color: white;
