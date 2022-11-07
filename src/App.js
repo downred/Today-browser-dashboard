@@ -37,7 +37,7 @@ function App() {
 
     async function fetchData() {
       const newsRequest = await axios.get(
-        `${NEWS_API_ENDPOINT}everything?sources=${newsSource}&from=${date}&sortBy=popularity&apiKey=${NEWS_API_KEY}`
+        `${NEWS_API_ENDPOINT}everything?sources=${newsSource}&from=$2022-10-08&sortBy=popularity&apiKey=${NEWS_API_KEY}`
       );
       const weatherRequest = await axios.get(FINAL_ENDPOINT);
       const forecastRequest = await axios.get(FINAL_FORECAST_ENDPOINT);
