@@ -54,7 +54,7 @@ function App() {
       setCurrentWeather(weatherRequest.data);
       setForecast(forecastRequest.data.list.slice(7, 12));
       setBg(
-        `/weather-dashboard/weather-images/${weatherRequest.data.weather[0].icon}.jpg`
+        `/Today-browser-dashboard/weather-images/${weatherRequest.data.weather[0].icon}.jpg`
       );
     }
 
