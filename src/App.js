@@ -53,7 +53,9 @@ function App() {
       setNewsData(newsRequest.data.response.results);
       setCurrentWeather(weatherRequest.data);
       setForecast(forecastRequest.data.list.slice(7, 12));
-      setBg(`/weather-images/${weatherRequest.data.weather[0].icon}.jpg`);
+      setBg(
+        `/weather-dashboard/weather-images/${weatherRequest.data.weather[0].icon}.jpg`
+      );
     }
 
     fetchData();
