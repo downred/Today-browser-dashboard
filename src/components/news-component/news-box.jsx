@@ -8,7 +8,7 @@ const NewsBox = (props) => {
     <div className="box news-box">
       <div className="newsbox-header">
         <h4 className="title">What's new today?</h4>
-        <SettingsButton />
+        {/* <SettingsButton /> */}
       </div>
       <span>
         <hr />
